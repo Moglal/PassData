@@ -1,0 +1,43 @@
+﻿@using PassData.Models
+@model Customers
+
+@{
+    ViewBag.Title = "showAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    <h2>showAll</h2>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age </th>
+                <th scope="col">Gender </th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Customers c in ViewBag.customerss)
+            {
+            <tr>
+                <th scope="row">@{int ii = Convert.ToInt32(ViewBag.customerss.IndexOf(c)) + 1;}@ii</th>
+                <td>@c.name</td>
+                <td>@c.age</td>
+                <td>@c._gender</td>
+                <td>@c.address</td>
+                <td>@c.phone</td>
+                <td>
+                    <a href="/customers/edit/?name=@c.name"><input type="button" class="btn btn-success" style="width:20%" value="Edit" /></a>
+                    
+                    <a href="/customers/delete?name=@c.name"><input type="button" class="btn btn-danger" style="width:25%" value="delete" /></a>
+</td>
+            </tr>
+
+            }
+        </tbody>
+    </table>
+
+}
+
